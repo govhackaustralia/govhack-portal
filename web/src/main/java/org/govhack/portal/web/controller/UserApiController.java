@@ -2,6 +2,7 @@ package org.govhack.portal.web.controller;
 
 import org.govhack.portal.data.model.User;
 import org.govhack.portal.data.repo.UserRepository;
+import org.govhack.portal.security.Authenticated;
 import org.govhack.portal.service.UserService;
 import org.govhack.portal.service.view.UserView;
 import org.govhack.portal.web.model.UserCreateModel;
@@ -28,10 +29,14 @@ public class UserApiController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.PUT)
-    public ResponseEntity<UserView> createPatent(@RequestBody UserCreateModel model) {
+    public ResponseEntity<UserView> createUser(@RequestBody UserCreateModel model) {
         User x = userService.create(model);
         return new ResponseEntity<>(new UserView(x), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<UserView> userDetails(@Authenticated User user) {
+        return new ResponseEntity<>(new UserView(user), HttpStatus.OK);
+    }
 
 }

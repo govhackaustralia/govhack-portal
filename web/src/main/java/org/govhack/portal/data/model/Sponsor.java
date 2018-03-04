@@ -26,4 +26,20 @@ public class Sponsor extends BaseEntity implements Serializable {
         this.owner = owner;
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Prize> getPrizeList() {
+        return prizeList;
+    }
+
+    public void setPrizeList(List<Prize> prizeList) {
+        this.prizeList = prizeList;
+    }
 }

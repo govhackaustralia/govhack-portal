@@ -24,8 +24,10 @@ export default class LoginPage extends Vue {
     login() {
         Api.doLogin(this.username, this.password)
             .then(x => {
-                if (x.success && x.success === true) {
-
+                if (x.id) {
+                    if (x.roles.indexOf("SPONSOR_ADMIN") > -1) {
+                        this.$router.push({name: 'sponsor'});
+                    }
                 }
             })
     }

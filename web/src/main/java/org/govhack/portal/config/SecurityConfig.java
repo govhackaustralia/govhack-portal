@@ -60,14 +60,14 @@ public class SecurityConfig {
             http.headers().cacheControl().disable();
             http.headers().frameOptions().sameOrigin();
             http.csrf().disable();
-            http.authorizeRequests()
-                    .antMatchers("/resources/**", "/error", "/exit").permitAll()
-                    .anyRequest().authenticated()
-                    .and().formLogin()
+            http.formLogin()
                     .passwordParameter("password").usernameParameter("username")
-                    .loginProcessingUrl("/do-login").loginPage("/login")
+                    .loginPage("/login").loginProcessingUrl("/do-login")
                     .successForwardUrl("/login-success").failureForwardUrl("/login-error").permitAll()
                     .and().logout().permitAll();
+            http.authorizeRequests()
+                    .antMatchers("/resources/**", "/error", "/exit").permitAll()
+                    .anyRequest().authenticated();
         }
 
         @Bean

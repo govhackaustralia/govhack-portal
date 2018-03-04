@@ -39,7 +39,7 @@ const routes: RouteConfig[] = [
         component: HomePage
     },
     {
-        path: '/sponsor',
+        path: '/portal',
         name: 'sponsor',
         component: SponsorPage
     }

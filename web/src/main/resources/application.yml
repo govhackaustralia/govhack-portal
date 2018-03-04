@@ -10,7 +10,7 @@ server:
     timeout: 36000
     cookie:
       http-only: true
-      secure: true
+      secure: false
       # 10 hours in seconds
       max-age: 36000
   jsp-servlet:

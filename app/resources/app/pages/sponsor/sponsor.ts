@@ -14,10 +14,22 @@ import Api from "../../common/api";
 })
 export default class SponsorPage extends Vue {
 
-    private username = (window as any).USER_NAME;
+    private userDetails: {};
+
+    private sponsorName: string;
 
     created() {
+        Api.userDetails()
+            .then(x => {
+                this.userDetails = x;
+            });
+    }
 
+    update() {
+        Api.updateSponsor({name: this.sponsorName})
+            .then(x => {
+                console.log(x);
+            })
     }
 
 }

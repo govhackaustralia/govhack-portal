@@ -17,14 +17,17 @@ public class GovhackUserService implements IGovhackUserService<User> {
         this.userRepo = userRepo;
     }
 
+    @Override
     public Optional<User> findByUsernameCaseInsensitive(String name) {
         return userRepo.findByUsernameCaseInsensitive(name);
     }
 
+    @Override
     public User findByUsername(String name) {
         return userRepo.findByUsername(name);
     }
 
+    @Override
     public User save(User entity) {
         return userRepo.save(entity);
     }
