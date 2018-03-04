@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Component
 @Transactional(rollbackFor = Exception.class)
 public class SponsorService {
@@ -23,14 +25,18 @@ public class SponsorService {
         this.sponsorRepository = sponsorRepository;
     }
 
-    public Sponsor updateOrCreate(Competition competition, User owner, SponsorUpdateModel sponsor) {
+    public Sponsor updateOrCreate(Competition competition, User owner, SponsorUpdateModel model) {
 
-        Sponsor s = sponsorRepository.findOneByUser(owner)
-                .orElse(sponsorRepository.save(new Sponsor(competition, owner, sponsor.getName())));
-
-        s.setName(sponsor.getName());
-
-        return sponsorRepository.save(s);
+        Optional<Sponsor> s = sponsorRepository.findOneByUser(owner);
+        Sponsor sponsor;
+        if (s.isPresent()) {
+            sponsor = s.get();
+            sponsor.setName(model.getName());
+            sponsorRepository.save(sponsor);
+        } else {
+            sponsor = sponsorRepository.save(new Sponsor(competition, owner, model.getName()));
+        }
+        return sponsor;
     }
 
 }
