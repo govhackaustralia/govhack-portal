@@ -75,6 +75,7 @@ public class User extends BaseEntity implements Serializable, IGovhackUser {
         this.roles = Arrays.asList(userRoles.getNiceName()).toArray(new String[0]);
     }
 
+    @Override
     public String getEmail() {
         return email;
     }
@@ -84,6 +85,7 @@ public class User extends BaseEntity implements Serializable, IGovhackUser {
         this.email = email;
     }
 
+    @Override
     public String getFirstName() {
         return firstName;
     }
@@ -93,6 +95,7 @@ public class User extends BaseEntity implements Serializable, IGovhackUser {
         this.firstName = firstName;
     }
 
+    @Override
     public String getLastName() {
         return lastName;
     }
@@ -102,14 +105,17 @@ public class User extends BaseEntity implements Serializable, IGovhackUser {
         this.lastName = lastName;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
 
+    @Override
     public List<UserRoles> getRoles() {
         if (roles != null) {
             return Arrays.stream(roles)
@@ -119,6 +125,7 @@ public class User extends BaseEntity implements Serializable, IGovhackUser {
         }
     }
 
+    @Override
     public void setRoles(List<UserRoles> roles) {
         this.roles = roles.stream().map(UserRoles::getNiceName).toArray(String[]::new);
     }
