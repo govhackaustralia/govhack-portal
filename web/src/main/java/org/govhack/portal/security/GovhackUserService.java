@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class GovhackUserService {
+public class GovhackUserService implements IGovhackUserService<User> {
 
     private final UserRepository userRepo;
 
@@ -19,6 +19,10 @@ public class GovhackUserService {
 
     public Optional<User> findByUsernameCaseInsensitive(String name) {
         return userRepo.findByUsernameCaseInsensitive(name);
+    }
+
+    public User findByUsername(String name) {
+        return userRepo.findByUsername(name);
     }
 
     public User save(User entity) {

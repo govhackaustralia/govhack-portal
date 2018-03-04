@@ -1,6 +1,5 @@
 package org.govhack.portal.security;
 
-import org.govhack.portal.data.model.User;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.support.WebArgumentResolver;
@@ -31,11 +30,7 @@ public class UserMethodArgumentResolver<T extends IGovhackUser> implements Handl
                                   WebDataBinderFactory binderFactory) throws Exception {
 
         if (this.supportsParameter(methodParameter)) {
-            try {
-                return ((GovhackUser) SecurityContextHolder.getContext().getAuthentication().getDetails()).getUser();
-            } catch (Exception ignored) {
-                return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-            }
+            return ((GovhackUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
         } else {
             return WebArgumentResolver.UNRESOLVED;
         }

@@ -1,22 +1,18 @@
 package org.govhack.portal.security;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
-import java.util.Collection;
 import java.util.Objects;
-import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class GovhackUser<T extends IGovhackUser> extends User {
 
     private final T user;
 
-    /**
-     * Note we're just generating a random UUID as we don't authenticate via passwords
-     */
-    public GovhackUser(T user, Collection<? extends GrantedAuthority> authorities) {
-        super(user.getUsername(), UUID.randomUUID().toString(), authorities);
+    public GovhackUser(T user) {
+        super(user.getUsername(), user.getPassword(), user.getRoles().stream().map(x -> new SimpleGrantedAuthority(x.getNiceName())).collect(Collectors.toList()));
         this.user = user;
     }
 

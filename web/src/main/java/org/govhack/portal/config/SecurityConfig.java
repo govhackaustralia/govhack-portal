@@ -1,6 +1,9 @@
 package org.govhack.portal.config;
 
+import org.govhack.portal.data.model.User;
 import org.govhack.portal.data.repo.UserRepository;
+import org.govhack.portal.security.GovhackUserService;
+import org.govhack.portal.security.UserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
@@ -41,6 +43,11 @@ public class SecurityConfig {
         @Autowired
         public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
             auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        }
+
+        @Bean
+        UserDetailsService<User> userUserDetailsService(UserRepository userRepo) {
+            return new UserDetailsService<>(new GovhackUserService(userRepo));
         }
 
         @Override
