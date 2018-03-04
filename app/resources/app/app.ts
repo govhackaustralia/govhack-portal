@@ -17,6 +17,8 @@ import './vendor/fontawesome/regular.js';
 import './vendor/fontawesome/solid.js';
 
 import '../scss/style.scss';
+import SponsorPage from "./pages/sponsor/sponsor";
+import LoginPage from "./pages/login/login";
 
 require('bootstrap/dist/css/bootstrap.min.css');
 
@@ -27,9 +29,19 @@ Vue.use(BootstrapVue);
 
 const routes: RouteConfig[] = [
     {
-        path: '/',
+        path: '/login',
+        name: 'login',
+        component: LoginPage
+    },
+    {
+        path: '/home',
         name: 'home',
         component: HomePage
+    },
+    {
+        path: '/sponsor',
+        name: 'sponsor',
+        component: SponsorPage
     }
 ];
 

@@ -63,20 +63,11 @@ public class PortalApplication {
 
     @Bean
     public TomcatEmbeddedServletContainerFactory tomcatEmbeddedServletContainerFactory() {
-//        LOG.info("Initialise Tomcat\nProxy Port: {}\nProxy Name: {}\nProxy Scheme: {}", proxyPort, proxyName, proxyScheme);
         TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
         tomcat.addContextLifecycleListeners(new VersionLoggerListener());
         tomcat.addContextLifecycleListeners(new SecurityListener());
         tomcat.addContextLifecycleListeners(new JreMemoryLeakPreventionListener());
         tomcat.addContextLifecycleListeners(new ThreadLocalLeakPreventionListener());
-
-//        if (!Objects.equals(-1, proxyPort) && StringUtils.isNotBlank(proxyName) && StringUtils.isNotBlank(proxyScheme)) {
-//            tomcat.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> {
-//                connector.setProxyPort(proxyPort); // eg 443
-//                connector.setProxyName(proxyName); // eg search.ipaustralia.gov.au
-//                connector.setScheme(proxyScheme); // eg https
-//            });
-//        }
 
         tomcat.addErrorPages(
                 new ErrorPage(HttpStatus.NOT_FOUND, "/404"),

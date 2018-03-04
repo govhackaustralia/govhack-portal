@@ -18,5 +18,7 @@ public interface UserRepository extends Repository<User, UUID> {
     @Query("select x from User x")
     Optional<List<User>> findAll();
 
+    User findByUsername(String username);
+
     User save(User entity);
 }

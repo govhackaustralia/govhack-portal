@@ -14,4 +14,21 @@ export default class Api {
             })
     }
 
+    public static async doLogin(username: string, password: string) {
+        return axios({
+            url: '/portal/do-login',
+            data: `username=${username}&password=${password}`,
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(x => {
+                return x.data;
+            })
+            .catch(y => {
+                console.error(y);
+            })
+    }
+
 }

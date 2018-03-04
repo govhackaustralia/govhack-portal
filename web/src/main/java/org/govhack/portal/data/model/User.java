@@ -1,6 +1,7 @@
 package org.govhack.portal.data.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.govhack.portal.security.IGovhackUser;
 import org.govhack.portal.service.model.UserRoles;
 import org.govhack.portal.utils.ArrayType;
 import org.govhack.portal.utils.JSONBUserType;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
         @TypeDef(name = "text[]", typeClass = ArrayType.class, parameters = {
                 @Parameter(name = "type", value = "java.lang.String")
         })})
-public class User extends BaseEntity implements Serializable {
+public class User extends BaseEntity implements Serializable, IGovhackUser {
 
     @Column(name = "username", nullable = false)
     private final String username;
@@ -33,13 +34,13 @@ public class User extends BaseEntity implements Serializable {
     private final String password;
 
     @Column(name = "email", nullable = false)
-    private final String email;
+    private String email;
 
     @Column(name = "first_name")
-    private final String firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    private final String lastName;
+    private String lastName;
 
     @Column(name = "roles", nullable = false)
     @Type(type = "text[]")
@@ -78,21 +79,44 @@ public class User extends BaseEntity implements Serializable {
         return email;
     }
 
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    @Override
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getUsername() {
         return username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public List<UserRoles> getRoles() {
-        return Arrays.stream(roles)
-                .map(UserRoles::fromString).collect(Collectors.toList());
+        if (roles != null) {
+            return Arrays.stream(roles)
+                    .map(UserRoles::fromString).collect(Collectors.toList());
+        } else {
+            return Arrays.asList(UserRoles.GUEST);
+        }
     }
 
     public void setRoles(List<UserRoles> roles) {
