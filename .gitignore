@@ -1,0 +1,9 @@
+*.iml
+.idea
+.gradle
+.idea/
+web/out
+security/out
+.DS_Store
+/clearDB_BootRun.sh
+/noClearDB_BootRun.sh

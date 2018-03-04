@@ -1,0 +1,5 @@
+
+datasource:
+  url: "jdbc:postgresql://localhost/govhack_portal"
+  username: govhack
+  password:

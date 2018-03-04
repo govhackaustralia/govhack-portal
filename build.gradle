@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.postgresql:postgresql:42.2.0'
+        classpath('org.liquibase:liquibase-gradle-plugin:1.2.1') {
+            exclude group: "org.liquibase", module: "liquibase-core"
+        }
+        classpath "org.liquibase:liquibase-core:3.5.3"
+    }
+}
+plugins {
+    id "net.ltgt.errorprone" version "0.0.13"
+
+}
+apply plugin: 'org.liquibase.gradle'
+
+subprojects {
+    apply plugin: "net.ltgt.errorprone"
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += [ '-Xep:MissingCasesInEnumSwitch:ERROR' ]
+    }
+    configurations.errorprone {
+        resolutionStrategy.force 'com.google.errorprone:error_prone_core:2.1.3'
+    }
+
+    apply from: "${System.properties['user.home']}/.gradle/base.gradle", to: subprojects
+
+    apply plugin: 'idea'
+    idea {
+        module {
+            name = "$project.parent.name $name"
+        }
+    }
+}
+
+liquibase {
+    activities {
+        main {
+            changeLogFile 'sql/changelog.xml'
+            url 'jdbc:postgresql://localhost/govhack_portal'
+            username 'govhack'
+            password ''
+        }
+    }
+    runList = 'main'
+}
+
+apply plugin: 'idea'
+idea {
+    module {
+        excludeDirs += file('app/node_modules')
+        excludeDirs += file('web/src/main/resources/resources')
+    }
+}

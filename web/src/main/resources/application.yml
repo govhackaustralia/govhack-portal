@@ -1,0 +1,37 @@
+server:
+  context-path: /portal
+  port: 9088
+  compression:
+    enabled: true
+    mime-types: text/html,text/plain,text/xml,application/xml,application/xml+rss,text/css,text/javascript,application/javascript,application/x-javascript,application/json,image/svg+xml
+    min-response-size: 2048
+  session:
+    # 10 hours in seconds
+    timeout: 36000
+    cookie:
+      http-only: true
+      secure: true
+      # 10 hours in seconds
+      max-age: 36000
+  jsp-servlet:
+    registered: false
+  proxy:
+    port:
+    scheme:
+    name:
+
+spring:
+  http:
+    encoding: UTF-8
+
+freemarker:
+  cache: true
+
+datasource:
+    url: "jdbc:postgresql://localhost/govhack_portal"
+    username: govhack
+    password:
+    dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+    connectionTimeout: 3000
+    maxLifetime: 1800000
+

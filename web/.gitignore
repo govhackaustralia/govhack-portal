@@ -1,0 +1,4 @@
+/bin/
+/build/
+src/main/resources/resources/
+src/main/resources/templates/app/static_import.ftl
