@@ -14,8 +14,8 @@ public class Sponsor extends BaseEntity implements Serializable {
     @OneToOne(targetEntity = Competition.class)
     private Competition competition;
 
-    @OneToMany
-    @JoinColumn(name = "sponsor")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "sponsor_id")
     List<Prize> prizeList;
 
     @OneToOne(targetEntity = User.class)

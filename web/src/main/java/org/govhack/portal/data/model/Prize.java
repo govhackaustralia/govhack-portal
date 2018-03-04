@@ -21,9 +21,16 @@ public class Prize extends BaseEntity implements Serializable {
     @ManyToMany(mappedBy = "prizes")
     private Set<Entry> entries = new HashSet<>();
 
+    public Prize() {
+    }
+
     public Prize(String name, Competition competition, Sponsor sponsor) {
         this.name = name;
         this.competition = competition;
         this.sponsor = sponsor;
+    }
+
+    public String getName() {
+        return name;
     }
 }

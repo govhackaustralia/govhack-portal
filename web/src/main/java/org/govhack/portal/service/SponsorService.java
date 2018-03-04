@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 @Transactional(rollbackFor = Exception.class)
@@ -23,6 +25,15 @@ public class SponsorService {
     @Autowired
     public SponsorService(SponsorRepository sponsorRepository) {
         this.sponsorRepository = sponsorRepository;
+    }
+
+    public Sponsor findById(UUID id) {
+        return sponsorRepository.findById(id).get();
+    }
+
+    public Sponsor findOneByOwner(User user) {
+        Optional<Sponsor> oneByUser = sponsorRepository.findOneByUser(user);
+        return oneByUser.orElse(new Sponsor());
     }
 
     public Sponsor updateOrCreate(Competition competition, User owner, SponsorUpdateModel model) {

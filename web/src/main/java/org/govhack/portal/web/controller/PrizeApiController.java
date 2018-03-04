@@ -1,12 +1,16 @@
 package org.govhack.portal.web.controller;
 
 import org.govhack.portal.data.model.Competition;
+import org.govhack.portal.data.model.Prize;
 import org.govhack.portal.data.model.Sponsor;
 import org.govhack.portal.data.model.User;
 import org.govhack.portal.security.Authenticated;
 import org.govhack.portal.service.CompetitionService;
+import org.govhack.portal.service.PrizeService;
 import org.govhack.portal.service.SponsorService;
+import org.govhack.portal.web.model.PrizeCreateModel;
 import org.govhack.portal.web.model.SponsorUpdateModel;
+import org.govhack.portal.web.view.PrizeView;
 import org.govhack.portal.web.view.SponsorView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,29 +23,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @Transactional(rollbackFor = Exception.class)
-@RequestMapping(value = {"/api/sponsor"})
-public class SponsorApiController {
+@RequestMapping(value = {"/api/prize"})
+public class PrizeApiController {
 
+    @Autowired
+    PrizeService prizeService;
     @Autowired
     SponsorService sponsorService;
 
     @Autowired
     CompetitionService competitionService;
 
-    SponsorApiController() {
+    PrizeApiController() {
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<SponsorView> getUserSponsor(@Authenticated User user) {
-        Sponsor x = sponsorService.findOneByOwner(user);
-        return new ResponseEntity<>(new SponsorView(x), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public ResponseEntity<SponsorView> updateSponsor(@Authenticated User user, @RequestBody SponsorUpdateModel model) {
+    @RequestMapping(value = "", method = RequestMethod.PUT)
+    public ResponseEntity<PrizeView> newPrize(@Authenticated User user, @RequestBody PrizeCreateModel model) {
         Competition competition = competitionService.findOrCreate("2018");
-        Sponsor x = sponsorService.updateOrCreate(competition, user, model);
-        return new ResponseEntity<>(new SponsorView(x), HttpStatus.OK);
+        Sponsor sponsor = sponsorService.findById(model.getSponsor());
+        Prize x = prizeService.addPrize(competition, sponsor, model);
+        return new ResponseEntity<>(new PrizeView(x), HttpStatus.OK);
     }
 
 }

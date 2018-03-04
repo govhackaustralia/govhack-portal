@@ -14,6 +14,16 @@ export default class Api {
             })
     }
 
+    public static async sponsorDetails() {
+        return axios.get('/portal/api/sponsor')
+            .then(x => {
+                return x.data;
+            })
+            .catch(y => {
+                console.error(y);
+            })
+    }
+
     public static async userDetails() {
         return axios.get('/portal/api/user')
             .then(x => {
@@ -26,6 +36,16 @@ export default class Api {
 
     public static async updateSponsor(data: any) {
         return axios.post('/portal/api/sponsor', data)
+            .then(x => {
+                return x.data;
+            })
+            .catch(y => {
+                console.error(y);
+            })
+    }
+
+    public static async addPrize(data: any) {
+        return axios.put('/portal/api/prize', data)
             .then(x => {
                 return x.data;
             })

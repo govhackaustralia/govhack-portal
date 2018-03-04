@@ -3,25 +3,21 @@ package org.govhack.portal.web.view;
 import org.govhack.portal.data.model.Prize;
 import org.govhack.portal.data.model.Sponsor;
 
-import java.util.List;
 import java.util.UUID;
 
-public class SponsorView {
+public class PrizeView {
 
     private final UUID id;
     private final String name;
-    private final List<Prize> prizeList;
 
-    private SponsorView() {
+    private PrizeView() {
         id = null;
         name = null;
-        prizeList = null;
     }
 
-    public SponsorView(Sponsor x) {
+    public PrizeView(Prize x) {
         id = x.getId();
         name = x.getName();
-        prizeList = x.getPrizeList();
     }
 
     public UUID getId() {
@@ -30,9 +26,5 @@ public class SponsorView {
 
     public String getName() {
         return name;
-    }
-
-    public List<Prize> getPrizeList() {
-        return prizeList;
     }
 }

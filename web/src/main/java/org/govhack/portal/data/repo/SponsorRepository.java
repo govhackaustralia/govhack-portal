@@ -14,4 +14,7 @@ public interface SponsorRepository extends Repository<Sponsor, UUID> {
 
     @Query("select x from Sponsor x where x.owner = ?1")
     Optional<Sponsor> findOneByUser(User owner);
+
+    @Query("select x from Sponsor x where x.id = ?1")
+    Optional<Sponsor> findById(UUID id);
 }
