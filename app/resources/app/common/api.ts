@@ -5,7 +5,7 @@ declare const BASE_URL: string;
 export default class Api {
 
     public static async createUser(userDetails: any) {
-        return axios.put('/portal/api/user', userDetails)
+        return axios.put('/portal/api/user/create', userDetails)
             .then(x => {
                 return x.data;
             })

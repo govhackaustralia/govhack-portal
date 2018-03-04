@@ -1,7 +1,7 @@
-package org.govhack.portal.service.view;
+package org.govhack.portal.data.view;
 
 import org.govhack.portal.data.model.User;
-import org.govhack.portal.service.model.UserRoles;
+import org.govhack.portal.security.UserRoles;
 
 import java.util.List;
 import java.util.UUID;

@@ -17,7 +17,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.session.web.http.HeaderHttpSessionStrategy;
+import org.springframework.session.web.http.HttpSessionStrategy;
 
+import javax.sql.DataSource;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -26,14 +29,19 @@ public class SecurityConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(SecurityConfig.class);
 
-    @Order(3)
     public static class UISecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+
         @Autowired
         UserRepository userRepository;
         @Autowired
         AuthenticationManager manager;
         @Autowired
         private UserDetailsService userDetailsService;
+
+        @Bean
+        public HttpSessionStrategy httpSessionStrategy() {
+            return new HeaderHttpSessionStrategy();
+        }
 
         @Bean
         BCryptPasswordEncoder passwordEncoder() {
@@ -52,7 +60,7 @@ public class SecurityConfig {
 
         @Override
         public void configure(WebSecurity web) {
-            web.ignoring().antMatchers("/home", "/error", "/exit", "/api/user");
+            web.ignoring().antMatchers("/home", "/error", "/exit", "/api/user/create");
         }
 
         @Override
@@ -76,5 +84,4 @@ public class SecurityConfig {
             return super.authenticationManagerBean();
         }
     }
-
 }

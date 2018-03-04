@@ -1,6 +1,6 @@
 package org.govhack.portal.web.model;
 
-import org.govhack.portal.service.view.UserView;
+import org.govhack.portal.data.view.UserView;
 
 public class IndexModel {
 

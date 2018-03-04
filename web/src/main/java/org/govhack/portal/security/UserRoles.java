@@ -1,10 +1,9 @@
-package org.govhack.portal.service.model;
+package org.govhack.portal.security;
 
 import javafx.util.Pair;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public enum UserRoles {

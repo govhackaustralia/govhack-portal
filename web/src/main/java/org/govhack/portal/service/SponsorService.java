@@ -4,14 +4,10 @@ import org.govhack.portal.data.model.Competition;
 import org.govhack.portal.data.model.Sponsor;
 import org.govhack.portal.data.model.User;
 import org.govhack.portal.data.repo.SponsorRepository;
-import org.govhack.portal.data.repo.UserRepository;
-import org.govhack.portal.service.model.UserRoles;
 import org.govhack.portal.web.model.SponsorUpdateModel;
-import org.govhack.portal.web.model.UserCreateModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

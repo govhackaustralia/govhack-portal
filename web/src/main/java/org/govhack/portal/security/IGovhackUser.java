@@ -1,7 +1,5 @@
 package org.govhack.portal.security;
 
-import org.govhack.portal.service.model.UserRoles;
-
 import java.util.List;
 
 public interface IGovhackUser {

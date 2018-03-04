@@ -1,12 +1,11 @@
 package org.govhack.portal.service;
 
-import org.govhack.portal.service.model.UserRoles;
+import org.govhack.portal.security.UserRoles;
 import org.govhack.portal.web.model.UserCreateModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.govhack.portal.data.model.User;

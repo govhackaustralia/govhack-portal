@@ -41,6 +41,9 @@ public class Competition extends BaseEntity implements Serializable {
     @JoinColumn(name = "competition")
     List<Entry> entryList;
 
+    public Competition() {
+    }
+
     public Competition(String name) {
         this.name = name;
     }

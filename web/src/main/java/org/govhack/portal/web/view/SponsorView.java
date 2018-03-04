@@ -1,10 +1,7 @@
 package org.govhack.portal.web.view;
 
 import org.govhack.portal.data.model.Sponsor;
-import org.govhack.portal.data.model.User;
-import org.govhack.portal.service.model.UserRoles;
 
-import java.util.List;
 import java.util.UUID;
 
 public class SponsorView {
@@ -22,4 +19,11 @@ public class SponsorView {
         name = x.getName();
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

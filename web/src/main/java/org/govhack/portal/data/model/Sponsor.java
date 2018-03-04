@@ -21,6 +21,9 @@ public class Sponsor extends BaseEntity implements Serializable {
     @OneToOne(targetEntity = User.class)
     User owner;
 
+    public Sponsor() {
+    }
+
     public Sponsor(Competition competition, User owner, String name) {
         this.competition = competition;
         this.owner = owner;

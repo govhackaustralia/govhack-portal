@@ -3,8 +3,7 @@ package org.govhack.portal.web.controller;
 import org.govhack.portal.security.Authenticated;
 import org.govhack.portal.data.model.User;
 import org.govhack.portal.data.repo.*;
-import org.govhack.portal.service.model.UserRoles;
-import org.govhack.portal.service.view.UserView;
+import org.govhack.portal.data.view.UserView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.govhack.portal.web.model.IndexModel;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @Transactional(rollbackFor = Exception.class)

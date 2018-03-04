@@ -1,8 +1,7 @@
 package org.govhack.portal.data.model;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.govhack.portal.security.IGovhackUser;
-import org.govhack.portal.service.model.UserRoles;
+import org.govhack.portal.security.UserRoles;
 import org.govhack.portal.utils.ArrayType;
 import org.govhack.portal.utils.JSONBUserType;
 import org.hibernate.annotations.Parameter;
@@ -15,7 +14,6 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Entity

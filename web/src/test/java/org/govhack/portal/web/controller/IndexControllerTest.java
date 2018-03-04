@@ -3,7 +3,7 @@ package org.govhack.portal.web.controller;
 import org.govhack.portal.PortalApplication;
 import org.govhack.portal.data.model.*;
 import org.govhack.portal.data.repo.*;
-import org.govhack.portal.service.model.UserRoles;
+import org.govhack.portal.security.UserRoles;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
