@@ -1,9 +1,9 @@
 package org.govhack.portal.security;
 
-import com.sun.tools.javac.util.Pair;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public enum UserRoles {
@@ -31,9 +31,13 @@ public enum UserRoles {
         return GUEST;
     }
 
-    public static List<Pair<UserRoles, String>> getListWithNames() {
+    public static List<Map<UserRoles, String>> getListWithNames() {
         return Arrays.stream(UserRoles.values())
-                .map(x -> new Pair<>(x, x + " - " + x.getNiceName()))
+                .map(x -> {
+                    HashMap<UserRoles, String> m = new HashMap<>();
+                    m.put(x, x + " - " + x.getNiceName());
+                    return m;
+                })
                 .collect(Collectors.toList());
     }
 
