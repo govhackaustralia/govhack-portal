@@ -3,7 +3,6 @@ package org.govhack.portal.data.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,11 +15,11 @@ public class Entry extends BaseEntity implements Serializable {
     @OneToOne(targetEntity = Competition.class)
     private Competition competition;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "entries_prizes",
-            joinColumns = { @JoinColumn(name = "entry_id") },
-            inverseJoinColumns = { @JoinColumn(name = "prize_id") }
+            joinColumns = {@JoinColumn(name = "entry_id")},
+            inverseJoinColumns = {@JoinColumn(name = "prize_id")}
     )
     private Set<Prize> prizes = new HashSet<>();
 

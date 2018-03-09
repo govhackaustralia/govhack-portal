@@ -6,28 +6,24 @@ import org.apache.catalina.core.ThreadLocalLeakPreventionListener;
 import org.apache.catalina.security.SecurityConfig;
 import org.apache.catalina.security.SecurityListener;
 import org.apache.catalina.startup.VersionLoggerListener;
-import org.apache.commons.lang3.StringUtils;
+import org.govhack.portal.config.JPAConfig;
 import org.govhack.portal.config.PropertyPlaceholderConfiguration;
+import org.govhack.portal.config.ViewConfig;
+import org.govhack.portal.config.WebConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.EmbeddedServletContainerAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.HttpEncodingAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.ServerPropertiesAutoConfiguration;
-import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.govhack.portal.config.JPAConfig;
-import org.govhack.portal.config.ViewConfig;
-import org.govhack.portal.config.WebConfig;
 
 import javax.security.auth.message.config.AuthConfigFactory;
-import java.util.Objects;
 
 @Configuration
 

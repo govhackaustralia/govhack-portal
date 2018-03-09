@@ -1,8 +1,8 @@
 package org.govhack.portal.data.repo;
 
+import org.govhack.portal.data.model.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
-import org.govhack.portal.data.model.User;
 
 import java.util.List;
 import java.util.Optional;

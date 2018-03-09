@@ -1,9 +1,10 @@
 package org.govhack.portal.web.controller;
 
-import org.govhack.portal.security.Authenticated;
 import org.govhack.portal.data.model.User;
 import org.govhack.portal.data.repo.*;
 import org.govhack.portal.data.view.UserView;
+import org.govhack.portal.security.Authenticated;
+import org.govhack.portal.web.model.IndexModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.govhack.portal.web.model.IndexModel;
 
 @Controller
 @Transactional(rollbackFor = Exception.class)

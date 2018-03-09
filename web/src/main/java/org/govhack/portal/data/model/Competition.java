@@ -1,11 +1,5 @@
 package org.govhack.portal.data.model;
 
-import org.govhack.portal.utils.ArrayType;
-import org.govhack.portal.utils.JSONBUserType;
-import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

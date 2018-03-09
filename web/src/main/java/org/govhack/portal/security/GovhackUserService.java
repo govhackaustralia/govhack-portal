@@ -1,8 +1,8 @@
 package org.govhack.portal.security;
 
-import org.springframework.stereotype.Component;
 import org.govhack.portal.data.model.User;
 import org.govhack.portal.data.repo.UserRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,5 +1,7 @@
 package org.govhack.portal.service;
 
+import org.govhack.portal.data.model.User;
+import org.govhack.portal.data.repo.UserRepository;
 import org.govhack.portal.security.UserRoles;
 import org.govhack.portal.web.model.UserCreateModel;
 import org.slf4j.Logger;
@@ -8,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.govhack.portal.data.model.User;
-import org.govhack.portal.data.repo.UserRepository;
 
 @Component
 @Transactional(rollbackFor = Exception.class)

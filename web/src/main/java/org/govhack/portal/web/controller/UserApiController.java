@@ -2,9 +2,9 @@ package org.govhack.portal.web.controller;
 
 import org.govhack.portal.data.model.User;
 import org.govhack.portal.data.repo.UserRepository;
+import org.govhack.portal.data.view.UserView;
 import org.govhack.portal.security.Authenticated;
 import org.govhack.portal.service.UserService;
-import org.govhack.portal.data.view.UserView;
 import org.govhack.portal.web.model.UserCreateModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

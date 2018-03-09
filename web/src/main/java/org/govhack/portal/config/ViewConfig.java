@@ -21,7 +21,8 @@ public class ViewConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(ViewConfig.class);
 
-    @Value("${freemarker.cache:true}") Boolean cache;
+    @Value("${freemarker.cache:true}")
+    Boolean cache;
 
     @Bean
     public FreeMarkerConfigurer freeMarkerConfigurer() {

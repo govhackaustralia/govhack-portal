@@ -1,6 +1,5 @@
 package org.govhack.portal.data.repo;
 
-import org.govhack.portal.data.model.Competition;
 import org.govhack.portal.data.model.Sponsor;
 import org.govhack.portal.data.model.User;
 import org.springframework.data.jpa.repository.Query;

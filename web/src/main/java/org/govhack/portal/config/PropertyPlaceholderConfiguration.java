@@ -9,9 +9,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
-import java.util.Properties;
 
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)

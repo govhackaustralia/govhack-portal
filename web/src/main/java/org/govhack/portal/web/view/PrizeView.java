@@ -1,7 +1,6 @@
 package org.govhack.portal.web.view;
 
 import org.govhack.portal.data.model.Prize;
-import org.govhack.portal.data.model.Sponsor;
 
 import java.util.UUID;
 
