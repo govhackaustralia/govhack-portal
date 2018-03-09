@@ -1,6 +1,6 @@
 package org.govhack.portal.security;
 
-import javafx.util.Pair;
+import com.sun.tools.javac.util.Pair;
 
 import java.util.Arrays;
 import java.util.List;
